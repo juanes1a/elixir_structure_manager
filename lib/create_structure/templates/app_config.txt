@@ -1,0 +1,16 @@
+defmodule #{module_name}# do
+
+  @moduledoc """
+   Provides strcut for app-config
+  """
+
+   defstruct [
+   ]
+
+   def load_config do
+     %__MODULE__{
+     }
+   end
+
+   defp load(property_name), do: Application.fetch_env!(:fua, property_name)
+ end

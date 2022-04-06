@@ -1,0 +1,75 @@
+[
+    {
+        "folder" : "config",
+        "path": "./data/config",
+        "files" : [
+            {
+                "name": "config.exs",
+                "template_path": "./lib/create_structure/templates/config.txt",
+                "module_name": ""
+            },
+            {
+                "name": "dev.exs",
+                "template_path": "./lib/create_structure/templates/dev.txt",
+                "module_name": ""
+            },
+            {
+                "name": "prod.exs",
+                "template_path": "./lib/create_structure/templates/prod.txt",
+                "module_name": ""
+            },
+            {
+                "name": "test.exs",
+                "template_path": "./lib/create_structure/templates/test.txt",
+                "module_name": ""
+            }
+        ]
+    },
+    {
+        "folder" : "driven_adapters",
+        "path" : "./lib/driven_adapters",
+        "files" : []
+    },
+    {
+        "folder": "entry_points",
+        "path" : "./lib/entry_points",
+        "files": [
+            {
+                "name": "api_rest.ex",
+                "template_path": "/lib/create_structure/templates/api_rest.txt",
+                "module_name": "EntryPoint.ApiRest"
+            }
+        ]
+    },
+    {
+        "folder": "model",
+        "path" : "./lib/domain/model",
+        "files": []
+    },
+    {
+        "folder": "use_cases",
+        "path" : "./lib/domain/use_cases",
+        "files": []
+    },
+    {
+        "folder": "behaviours",
+        "path" : "./lib/domain/behaviours",
+        "files": []
+    },
+    {
+        "folder": "config_internal",
+        "path" : "./lib/config",
+        "files": [
+            {
+                "name": "app_config.ex",
+                "template_path": "/lib/create_structure/templates/app_config.txt",
+                "module_name": "Config.AppConfig"
+            },
+            {
+                "name": "config_holder.ex",
+                "template_path": "/lib/create_structure/templates/app_config.txt",
+                "module_name": "ConfigHolder"
+            }
+        ]
+    }
+]

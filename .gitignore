@@ -24,3 +24,6 @@ elixir_structure_manager-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+/.idea/*
+/elixir_structure_manager.iml
