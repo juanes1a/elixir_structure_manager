@@ -1,4 +1,4 @@
-defmodule #{module_name}# do
+defmodule {module_name}.Config.AppConfig do
 
   @moduledoc """
    Provides strcut for app-config

@@ -1,6 +1,6 @@
-defmodule #{module_name}# do
+defmodule {module_name}.Config.ConfigHolde do
   use Agent
-  alias #{application_name}#.Config.AppConfig
+  alias {module_name}.Config.AppConfig
 
   @moduledoc """
   Provides Behaviours for handle app-configs

@@ -1,74 +1,91 @@
 [
     {
-        "folder" : "config",
+        "folder": "config",
         "path": "./data/config",
-        "files" : [
+        "files": [
             {
                 "name": "config.exs",
-                "template_path": "./lib/create_structure/templates/config.txt",
-                "module_name": ""
+                "template_path": "./lib/create_structure/templates/config.txt"
             },
             {
                 "name": "dev.exs",
-                "template_path": "./lib/create_structure/templates/dev.txt",
-                "module_name": ""
+                "template_path": "./lib/create_structure/templates/dev.txt"
             },
             {
                 "name": "prod.exs",
-                "template_path": "./lib/create_structure/templates/prod.txt",
-                "module_name": ""
+                "template_path": "./lib/create_structure/templates/prod.txt"
             },
             {
                 "name": "test.exs",
-                "template_path": "./lib/create_structure/templates/test.txt",
-                "module_name": ""
+                "template_path": "./lib/create_structure/templates/test.txt"
             }
         ]
     },
     {
-        "folder" : "driven_adapters",
-        "path" : "./lib/driven_adapters",
-        "files" : []
+        "folder": "driven_adapters",
+        "path": "./data/lib/driven_adapters/",
+        "files": []
     },
     {
         "folder": "entry_points",
-        "path" : "./lib/entry_points",
+        "path": "./data/lib/entry_points",
         "files": [
             {
                 "name": "api_rest.ex",
-                "template_path": "/lib/create_structure/templates/api_rest.txt",
-                "module_name": "EntryPoint.ApiRest"
+                "template_path": "./lib/create_structure/templates/api_rest.txt"
             }
         ]
     },
     {
         "folder": "model",
-        "path" : "./lib/domain/model",
+        "path": "./data/lib/domain/model/",
         "files": []
     },
     {
         "folder": "use_cases",
-        "path" : "./lib/domain/use_cases",
+        "path": "./data/lib/domain/use_cases/",
         "files": []
     },
     {
         "folder": "behaviours",
-        "path" : "./lib/domain/behaviours",
+        "path": "./data/lib/domain/behaviours/",
         "files": []
     },
     {
         "folder": "config_internal",
-        "path" : "./lib/config",
+        "path": "./data/lib/config",
         "files": [
             {
                 "name": "app_config.ex",
-                "template_path": "/lib/create_structure/templates/app_config.txt",
-                "module_name": "Config.AppConfig"
+                "template_path": "./lib/create_structure/templates/app_config.txt"
             },
             {
                 "name": "config_holder.ex",
-                "template_path": "/lib/create_structure/templates/app_config.txt",
-                "module_name": "ConfigHolder"
+                "template_path": "./lib/create_structure/templates/app_config.txt"
+            }
+        ]
+    },
+    {
+        "folder": "utils",
+        "path": "./data/lib/utils",
+        "files": [
+            {
+                "name": "certificates_admin.ex",
+                "template_path": "./lib/create_structure/templates/certificates_admin.txt"
+            },
+            {
+                "name": "data_type_utils.ex",
+                "template_path": "./lib/create_structure/templates/data_type_utils.txt"
+            }
+        ]
+    },
+    {
+        "folder": "lib",
+        "path": "./data/lib",
+        "files": [
+            {
+                "name": "application.ex",
+                "template_path": "./lib/create_structure/templates/application.txt"
             }
         ]
     }

@@ -1,10 +1,10 @@
-defmodule #{module_name}# do
+defmodule {module_name}.EntryPoint.ApiRest do
 
   @moduledoc """
   Access point to the rest exposed services
   """
-  alias #{application_name}#.Utils.DataTypeUtils
-  alias Fua.EntryPoint.ErrorHandler
+  alias {module_name}.Utils.DataTypeUtils
+  alias {module_name}.EntryPoint.ErrorHandler
   require Logger
   use Plug.Router
   use Timex
@@ -18,16 +18,16 @@ defmodule #{module_name}# do
   plug(Plug.Logger, log: :debug)
   plug(:match)
   plug(Plug.Parsers, parsers: [:urlencoded, :json], json_decoder: Poison)
-  plug(Plug.Telemetry, event_prefix: [#{application_name_atom}#, :plug])
+  plug(Plug.Telemetry, event_prefix: [:{application_name_atom}, :plug])
   plug(:dispatch)
 
-  get "/#{application_name}#/api/health" do
+  get "/{application_name_atom}/api/health" do
     %{
       status: "UP"
     } |> build_response(conn)
   end
 
-  get "/#{application_name}#/api/hello/" do
+  get "/{application_name_atom}/api/hello/" do
     build_response("Hello World", conn)
   end
 
