@@ -50,7 +50,7 @@ defmodule ElixirStructureManager.Core.ApplyTemplates do
   end
 
   def manage_application_name(application_name) do
-    case String.match?(application_name, ~r/^(\w+_\w+){0,1}$/) do
+    case String.match?(application_name, ~r/^([a-zA-Z0-9]+_[a-zA-Z0-9]+){1,}$/) do
       true ->
         {
           :ok,
