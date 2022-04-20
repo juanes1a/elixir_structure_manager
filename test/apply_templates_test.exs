@@ -41,4 +41,11 @@ defmodule ApplyTemplatesTest do
     end
   end
 
+  test "should create directories and files" do
+    with_mock File, [mkdir_p: fn(_path) -> :ok end] do
+      res = ApplyTemplates.create_content("/path")
+      assert :ok == res
+    end
+  end
+
 end
