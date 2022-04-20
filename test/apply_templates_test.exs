@@ -24,18 +24,14 @@ defmodule ApplyTemplatesTest do
   end
 
   test "should load template file" do
-    with_mocks([
-      {File, [], [read: fn(_path) -> {:ok, "{\"test\": \"replace content\"}"} end]}
-    ]) do
+    with_mock File, [read: fn(_path) -> {:ok, "{\"test\": \"replace content\"}"} end] do
       res = ApplyTemplates.load_template_file("/some_path")
       assert %{test: "replace content"} = res
     end
   end
   
   test "should load template file wit herror" do
-    with_mocks([
-      {File, [], [read: fn(_path) -> {:err, "error reading file"} end]}
-    ]) do
+    with_mock File, [read: fn(_path) -> {:err, "error reading file"} end] do
       res = ApplyTemplates.load_template_file("/some_path")
       assert {:err, _err} = res
     end
@@ -45,6 +41,56 @@ defmodule ApplyTemplatesTest do
     with_mock File, [mkdir_p: fn(_path) -> :ok end] do
       res = ApplyTemplates.create_content("/path")
       assert :ok == res
+    end
+  end
+
+  test "should create files" do
+    template = [
+      %{
+        folder: "config",
+        path: "./data/config",
+        files: [
+          %{
+            name: "config.exs",
+            template_path: "./lib/create_structure/templates/config.txt"
+          },
+          %{
+            name: "dev.exs",
+            template_path: "./lib/create_structure/templates/dev.txt"
+          }
+        ]
+      },
+      %{
+        folder: "driven_adapters",
+        path: "./data/lib/driven_adapters/",
+        files: []
+      },
+      %{
+        folder: "entry_points",
+        path: "./data/lib/entry_points",
+        files: [
+          %{
+            name: "api_rest.ex",
+            template_path: "./lib/create_structure/templates/api_rest.txt"
+          }
+        ]
+      }
+    ]
+
+    variable_list = [
+      %{name: "{application_name_atom}", value: ":test_project"},
+      %{name: "{module_name}", value: "TestProject"}
+    ]
+
+    with_mocks([
+      {File, [], [mkdir_p: fn(_path) -> :ok end]},
+      {File, [], [read: fn(_path) -> {:ok, "{module_name} - :{application_name_atom}"} end]},
+      {File, [], [write: fn(_path, _content) -> :ok end]}
+    ]) do
+      
+      res = ApplyTemplates.create_folder(template, variable_list)
+      IO.inspect(res)
+    
     end
   end
 
