@@ -13,18 +13,18 @@ defmodule ElixirStructureManager.Core.ApplyTemplates do
     }
   end
 
-  def cretate_folder([], _variable_list) do
+  def create_folder([], _variable_list) do
     Logger.info("Creación de la estructura terminada")
   end
-  def cretate_folder([%{folder: folder, path: path, files: []} | tail], variable_list) do
+  def create_folder([%{folder: folder, path: path, files: []} | tail], variable_list) do
     Logger.info("Creando directorio vacio #{folder}")
     create_content(path)
-    cretate_folder(tail, variable_list)
+    create_folder(tail, variable_list)
   end
-  def cretate_folder([%{folder: folder, path: path, files: files} | tail], variable_list) do
+  def create_folder([%{folder: folder, path: path, files: files} | tail], variable_list) do
     Logger.info("Creando directorio #{folder}")
     create_files(files, path, variable_list)
-    cretate_folder(tail, variable_list)
+    create_folder(tail, variable_list)
   end
 
   defp create_files([], folder_path, _variable_list) do
