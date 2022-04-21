@@ -89,8 +89,8 @@ defmodule ApplyTemplatesTest do
     ]) do
       
       res = ApplyTemplates.create_folder(template, variable_list)
-      IO.inspect(res)
-    
+      assert :ok == res
+
     end
   end
 
