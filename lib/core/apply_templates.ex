@@ -27,9 +27,9 @@ defmodule ElixirStructureManager.Core.ApplyTemplates do
     create_folder(tail, variable_list)
   end
 
-  defp create_files([], folder_path, _variable_list) do
+  defp create_files([], folder_path, _variable_list), do:
     Logger.info("Archivos del directorio #{folder_path} creados")
-  end
+
   defp create_files([head | tail], folder_path, variable_list) do
     %{name: name, template_path: template_path} = head
     with file_full_path <- folder_path <> "/" <> name,
