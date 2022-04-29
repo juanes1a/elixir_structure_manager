@@ -1,5 +1,15 @@
 [
     {
+        "folder": "",
+        "path": "./data",
+        "files": [
+            {
+              "name": "mix.exs",
+              "template_path": "./lib/create_structure/templates/mix.txt"
+            }
+        ]
+    },
+    {
         "folder": "config",
         "path": "./data/config",
         "files": [
@@ -61,7 +71,7 @@
             },
             {
                 "name": "config_holder.ex",
-                "template_path": "./lib/create_structure/templates/app_config.txt"
+                "template_path": "./lib/create_structure/templates/config_holder.txt"
             }
         ]
     },
