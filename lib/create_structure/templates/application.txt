@@ -17,7 +17,7 @@ defmodule {module_name}.Application do
     children = with_plug_server(config) ++ application_children(in_test?)
 
     CustomTelemetry.custom_telemetry_events()
-    opts = [strategy: :one_for_one, name: Fua.Supervisor]
+    opts = [strategy: :one_for_one, name: {module_name}.Supervisor]
     Supervisor.start_link(children, opts)
   end
 

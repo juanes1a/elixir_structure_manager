@@ -1,4 +1,4 @@
-defmodule {module_name}.Config.ConfigHolde do
+defmodule {module_name}.Config.ConfigHolder do
   use Agent
   alias {module_name}.Config.AppConfig
 

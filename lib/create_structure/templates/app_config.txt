@@ -12,5 +12,5 @@ defmodule {module_name}.Config.AppConfig do
      }
    end
 
-   defp load(property_name), do: Application.fetch_env!(:fua, property_name)
+   defp load(property_name), do: Application.fetch_env!(:{application_name_atom}, property_name)
  end
