@@ -13,7 +13,14 @@ defmodule Mix.Tasks.CreateStructure do
 
   @structure_path "./lib/create_structure/parameters/create_structure.json"
   @version Mix.Project.config()[:version]
-
+  
+  @switches [dev: :boolean, assets: :boolean, ecto: :boolean,
+             app: :string, module: :string, web_module: :string,
+             database: :string, binary_id: :boolean, html: :boolean,
+             gettext: :boolean, umbrella: :boolean, verbose: :boolean,
+             live: :boolean, dashboard: :boolean, install: :boolean,
+             prefix: :string, mailer: :boolean]
+  
   def run ([]) do
     Mix.Tasks.Help.run(["create_structure"])
   end
@@ -25,8 +32,6 @@ defmodule Mix.Tasks.CreateStructure do
   @shortdoc "Creates a new clean architecture application."
   def run([application_name]) do
 
-    IO.inspect(application_name)
-
     Mix.Task.run("app.start")
 
     with {:ok, atom_name, module_name} <- ApplyTemplates.manage_application_name(application_name),
@@ -37,4 +42,32 @@ defmodule Mix.Tasks.CreateStructure do
       error -> Logger.error("Ocurrio un error creando la estructura: #{inspect(error)}")
     end
   end
+  
+  def run(argv) do
+    IO.inspect(argv)
+    
+    opts = parse_opts(argv)
+    IO.inspect(opts)
+
+    case opts do
+      {_opts, []} ->
+        Mix.Tasks.Help.run(["create_structure"])
+
+      {opts, [base_path | _]} ->
+        IO.inspect(opts)
+        IO.inspect(base_path)
+    end
+  end
+  
+  defp parse_opts(argv) do
+    case OptionParser.parse(argv, strict: @switches) do
+      {opts, argv, []} ->
+        {opts, argv}
+      {_opts, _argv, [switch | _]} ->
+        Mix.raise "Invalid option: " <> switch_to_string(switch)
+    end
+  end
+  
+  defp switch_to_string({name, nil}), do: name
+  defp switch_to_string({name, val}), do: name <> "=" <> val
 end
