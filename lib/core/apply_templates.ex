@@ -56,19 +56,13 @@ defmodule ElixirStructureManager.Core.ApplyTemplates do
           :ok,
           application_name
           |> String.downcase(),
-          application_name
-          |> String.downcase()
-          |> String.split("_")
-          |> Enum.map(&up_case_first/1)
-          |> Enum.join()
+          Macro.camelize(application_name)
         }
       _ ->
         Logger.error("Nombre de aplicación invalido")
         {:error, :invalid_application_name}
     end
   end
-
-  defp up_case_first(<<first :: utf8, rest :: binary>>), do: String.upcase(<<first :: utf8>>) <> rest
 
   def load_template_file(read_path) do
     with {:ok, content} <- File.read(read_path),
