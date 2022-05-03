@@ -7,8 +7,9 @@ config :{application_name_atom},
        enable_server: true,
        secret_name: "",
        region: "",
+       version: "0.0.1",
        in_test: true,
-       version: "0.0.1"
+       custom_metrics_prefix_name: "{application_name_atom}_local"
 
 config :logger,
        level: :debug

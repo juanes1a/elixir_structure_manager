@@ -5,10 +5,14 @@ defmodule {module_name}.Config.AppConfig do
   """
 
    defstruct [
+     :enable_server,
+     :http_port
    ]
 
    def load_config do
      %__MODULE__{
+       enable_server: load(:enable_server),
+       http_port: load(:http_port)
      }
    end
 

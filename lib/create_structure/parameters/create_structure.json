@@ -1,7 +1,7 @@
 [
     {
         "folder": "",
-        "path": "./data",
+        "path": "",
         "files": [
             {
               "name": "mix.exs",
@@ -11,7 +11,7 @@
     },
     {
         "folder": "config",
-        "path": "./data/config",
+        "path": "/config",
         "files": [
             {
                 "name": "config.exs",
@@ -33,12 +33,12 @@
     },
     {
         "folder": "driven_adapters",
-        "path": "./data/lib/driven_adapters/",
+        "path": "/lib/driven_adapters/",
         "files": []
     },
     {
         "folder": "entry_points",
-        "path": "./data/lib/entry_points",
+        "path": "/lib/entry_points",
         "files": [
             {
                 "name": "api_rest.ex",
@@ -48,22 +48,22 @@
     },
     {
         "folder": "model",
-        "path": "./data/lib/domain/model/",
+        "path": "/lib/domain/model/",
         "files": []
     },
     {
         "folder": "use_cases",
-        "path": "./data/lib/domain/use_cases/",
+        "path": "/lib/domain/use_cases/",
         "files": []
     },
     {
         "folder": "behaviours",
-        "path": "./data/lib/domain/behaviours/",
+        "path": "/lib/domain/behaviours/",
         "files": []
     },
     {
         "folder": "config_internal",
-        "path": "./data/lib/config",
+        "path": "/lib/config",
         "files": [
             {
                 "name": "app_config.ex",
@@ -77,7 +77,7 @@
     },
     {
         "folder": "utils",
-        "path": "./data/lib/utils",
+        "path": "/lib/utils",
         "files": [
             {
                 "name": "certificates_admin.ex",
@@ -86,12 +86,16 @@
             {
                 "name": "data_type_utils.ex",
                 "template_path": "./lib/create_structure/templates/data_type_utils.txt"
+            },
+	    {
+                "name": "custom_telemetry.ex",
+                "template_path": "./lib/create_structure/templates/custom_telemetry.txt"
             }
         ]
     },
     {
         "folder": "lib",
-        "path": "./data/lib",
+        "path": "/lib",
         "files": [
             {
                 "name": "application.ex",
