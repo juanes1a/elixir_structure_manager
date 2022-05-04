@@ -88,7 +88,7 @@ defmodule ApplyTemplatesTest do
       {File, [], [write: fn(_path, _content) -> :ok end]}
     ]) do
       
-      res = ApplyTemplates.create_folder(template, variable_list)
+      res = ApplyTemplates.create_folder(template, "test_folder", variable_list)
       assert :ok == res
 
     end
