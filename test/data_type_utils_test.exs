@@ -32,9 +32,9 @@ defmodule DataTypeUtilsTest do
 
     res_list = DataTypeUtils.normalize(list_test)
     assert list_test == res_list
-    
+
     res_structure = DataTypeUtils.normalize(model)
-    assert model == res_structure 
+    assert model == res_structure
   end
 
 end

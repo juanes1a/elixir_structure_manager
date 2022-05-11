@@ -24,17 +24,8 @@ defmodule ApplyTemplatesTest do
   end
 
   test "should load template file" do
-    with_mock File, [read: fn(_path) -> {:ok, "{\"test\": \"replace content\"}"} end] do
-      res = ApplyTemplates.load_template_file("/some_path")
-      assert %{test: "replace content"} = res
-    end
-  end
-  
-  test "should load template file wit herror" do
-    with_mock File, [read: fn(_path) -> {:err, "error reading file"} end] do
-      res = ApplyTemplates.load_template_file("/some_path")
-      assert {:err, _err} = res
-    end
+      res = ApplyTemplates.load_template_file("test/assets/create_structure.exs")
+      assert %{name: "test", template_path: "templates/mix.txt"} = res
   end
 
   test "should create directories and files" do
@@ -87,7 +78,7 @@ defmodule ApplyTemplatesTest do
       {File, [], [read: fn(_path) -> {:ok, "{module_name} - :{application_name_atom}"} end]},
       {File, [], [write: fn(_path, _content) -> :ok end]}
     ]) do
-      
+
       res = ApplyTemplates.create_folder(template, "test_folder", variable_list)
       assert :ok == res
 
