@@ -9,6 +9,6 @@ defmodule Mix.Task.CreateDrivenAdapter do
 
 
     # calling our Hello.say() function from earlier
-    GenerateConfig.create_config_files()
+    # GenerateConfig.create_config_files()
   end
 end

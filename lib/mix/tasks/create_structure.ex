@@ -11,16 +11,16 @@ defmodule Mix.Tasks.CreateStructure do
 
   use Mix.Task
 
-  @structure_path "./lib/create_structure/parameters/create_structure.json"
+  @structure_path "/priv/create_structure/parameters/create_structure.exs"
   @version Mix.Project.config()[:version]
-  
+
   @switches [dev: :boolean, assets: :boolean, ecto: :boolean,
              app: :string, module: :string, web_module: :string,
              database: :string, binary_id: :boolean, html: :boolean,
              gettext: :boolean, umbrella: :boolean, verbose: :boolean,
              live: :boolean, dashboard: :boolean, install: :boolean,
              prefix: :string, mailer: :boolean]
-  
+
   def run ([]) do
     Mix.Tasks.Help.run(["create_structure"])
   end
@@ -31,18 +31,19 @@ defmodule Mix.Tasks.CreateStructure do
 
   @shortdoc "Creates a new clean architecture application."
   def run([application_name]) do
+    structure_path = Application.app_dir(:elixir_structure_manager) <> @structure_path
     with {:ok, atom_name, module_name} <- ApplyTemplates.manage_application_name(application_name),
-         template <- ApplyTemplates.load_template_file(@structure_path),
+         template <- ApplyTemplates.load_template_file(structure_path),
          {:ok, variable_list} <- ApplyTemplates.create_variables_list(atom_name, module_name) do
       ApplyTemplates.create_folder(template, atom_name, variable_list)
     else
       error -> Logger.error("Ocurrio un error creando la estructura: #{inspect(error)}")
     end
   end
-  
+
   def run(argv) do
     IO.inspect(argv)
-    
+
     opts = parse_opts(argv)
     IO.inspect(opts)
 
@@ -55,7 +56,7 @@ defmodule Mix.Tasks.CreateStructure do
         IO.inspect(base_path)
     end
   end
-  
+
   defp parse_opts(argv) do
     case OptionParser.parse(argv, strict: @switches) do
       {opts, argv, []} ->
@@ -64,7 +65,7 @@ defmodule Mix.Tasks.CreateStructure do
         Mix.raise "Invalid option: " <> switch_to_string(switch)
     end
   end
-  
+
   defp switch_to_string({name, nil}), do: name
   defp switch_to_string({name, val}), do: name <> "=" <> val
 end

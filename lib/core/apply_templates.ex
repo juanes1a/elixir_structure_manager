@@ -1,6 +1,5 @@
 defmodule ElixirStructureManager.Core.ApplyTemplates do
 
-  alias ElixirStructureManager.Core.DataTypeUtils
   require Logger
 
   def create_variables_list(atom_name, module_name) do
@@ -67,15 +66,8 @@ defmodule ElixirStructureManager.Core.ApplyTemplates do
   end
 
   def load_template_file(read_path) do
-    with {:ok, content} <- File.read(read_path),
-         {:ok, parsed} <- Poison.decode(content),
-         normalized <- DataTypeUtils.normalize(parsed) do
-      normalized
-    else
-      err ->
-        Logger.error("Error loading consumers #{inspect(err)}")
-        err
-    end
+    {content, _ignored} = Code.eval_file(read_path)
+    content
   end
 
   def create_content(path) do
